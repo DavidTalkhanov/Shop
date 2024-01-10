@@ -10,6 +10,9 @@ document.addEventListener("DOMContentLoaded", function() {
     document.getElementById('filterButton').addEventListener('click', function() {
         filterProducts();
     });
+    document.getElementById('searchButton').addEventListener('click', function() {
+        searchProducts();
+    });
 });
 
 const products = [
@@ -63,5 +66,12 @@ function filterProducts() {
         product.height === parseInt(profile.height) && product.footSize === parseInt(profile.footSize)
     );
 
+    displayProducts(filteredProducts);
+}
+function searchProducts() {
+    const searchProduct = document.getElementById('searchInput').value;
+    const filteredProducts = products.filter(product => 
+        product.name.toLowerCase()===searchProduct.toLowerCase()
+    );
     displayProducts(filteredProducts);
 }
